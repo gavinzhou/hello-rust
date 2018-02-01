@@ -18,11 +18,11 @@ jobs:
       - checkout
       - restore_cache:
           key: project-cache
-      - run:
-          name: Check formatting
-          command: |
-            rustfmt --version
-            cargo fmt -- --write-mode=diff
+      # - run:
+      #     name: Check formatting
+      #     command: |
+      #       rustfmt --version
+      #       cargo fmt -- --write-mode=diff
       - run:
           name: Nightly Build
           command: |
@@ -35,9 +35,9 @@ jobs:
             rustup run stable rustc --version --verbose
             rustup run stable cargo --version --verbose
             rustup run stable cargo build
-      - run:
-          name: Test
-          command: rustup run stable cargo test
+      # - run:
+      #     name: Test
+      #     command: rustup run stable cargo test
       # - run:
       #     name: Upload Coverage
       #     command: ./scripts/codecov.sh
