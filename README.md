@@ -1,5 +1,3 @@
 # hello -rust
 
 ## study rust
-
-
