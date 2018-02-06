@@ -1,6 +1,7 @@
 FROM ekidd/rust-musl-builder AS builder
 ADD . ./
-RUN sudo chown -R rust:rust /home/rust
+RUN sudo chown -R rust:rust /home/rust \
+  && cargo build --release
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
