@@ -68,6 +68,13 @@ jobs:
             docker images
 
       - run:
+          name: Test container
+          command: |
+            version=$(git describe --always --tags)
+            docker run -d --name ${CIRCLE_PROJECT_REPONAME} -p 3000:3000 "orangesys/${CIRCLE_PROJECT_REPONAME}:${version}"
+            docker run --network container:${CIRCLE_PROJECT_REPONAME} \
+              appropriate/curl -s -X GET 'http://127.0.0.1:3000'
+      - run:
           name: push container to docker hub
           command: |
             version=$(git describe --always --tags)
