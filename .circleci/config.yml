@@ -50,3 +50,12 @@ jobs:
       - checkout
       - run:
           cargo build --release
+
+workflows:
+  version: 2
+  build-and-container:
+    jobs:
+      - build
+      - build_container:
+          requires:
+            - build
