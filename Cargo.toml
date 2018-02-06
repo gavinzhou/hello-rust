@@ -5,4 +5,5 @@ authors = ["gavinzhou <gavin.zhou@gmail.com>"]
 
 [dependencies]
 
-rand = "0.3.0"
+[dependencies.iron]
+version = "*"
