@@ -60,7 +60,7 @@ jobs:
             mv /tmp/docker/* /usr/bin
       - run:
           command: |
-            ./scripts/create-cotnainer.sh
+            ./scripts/create-container.sh
 
 workflows:
   version: 2
