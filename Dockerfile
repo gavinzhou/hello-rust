@@ -3,9 +3,8 @@ ADD . ./
 RUN sudo chown -R rust:rust /home/rust \
   && cargo build --release
 
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+FROM gcr.io/distroless/base
 COPY --from=builder \
     /home/rust/src/target/x86_64-unknown-linux-musl/release/hello-rust \
-    /usr/local/bin/
-CMD /usr/local/bin/hello-rust
+    /usr/sbin/
+ENTRYPOINT [ "/usr/sbin/hello-rust" ] 
